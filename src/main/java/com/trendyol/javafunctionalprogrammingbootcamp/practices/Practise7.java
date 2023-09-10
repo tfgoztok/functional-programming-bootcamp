@@ -16,7 +16,8 @@ public class Practise7 {
         // TODO: start and end date is inclusive.
         // TODO: return true if there is no such payment in that range.
         // TODO: return true if reconciliation completed for all of them, else false.
-
-        return false;
+        return payments.stream()
+                .filter(payment -> startDate <= payment.getCreatedDate() && payment.getCreatedDate() <= endDate)
+                .allMatch(Payment::isReconciliationCompleted);
     }
 }
